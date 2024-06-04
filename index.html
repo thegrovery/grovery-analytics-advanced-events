@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+
+	<div class="flexContainer">
+
+		<button 
+			id="hoverButton" 
+			class="radius_trigger" 
+			data-analytics-proximity="true" 
+			data-analytics-proximity-state=""
+		>
+			Hover Over Me!
+		</button>
+
+	</div>
+
+</body>
+
+<style type="text/css">
+	.flexContainer{
+		width: 100%;
+		height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.radius_trigger {
+	  position: relative;
+	  z-index: 5;
+	}
+	.radius_trigger:before {
+	  content: '';
+	  position: absolute;
+	  top: 50%;
+	  left: 50%;
+	  transform: translate3d(-50%, -50%, 0);
+	  background-color: rgba(0,255,0,0.5);
+	  border: dashed 2px #000;
+	  border-radius: 25%;
+	  height: 75px;
+	  width: 150px;
+	}
+	.button {
+	  position: relative;
+	  border: solid 3px #000;
+	  display: inline-block;
+	  padding: 5px 15px;
+	  cursor: pointer;
+	  transition: 0.25s ease-in-out;
+	}
+	.button:hover {
+	  background-color: #999;
+	  color: #fff;
+	  transform: translate3d(-5px, -5px, 0);
+	  box-shadow: 5px 5px rgba(0,0,0,0.75);
+	}
+</style>
+
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function() {
+    
+   var elements = document.querySelectorAll('[data-analytics-proximity]');
+   elements.forEach(element => {
+   	element.addEventListener('mouseover', function() {
+		//arm the function
+		element.setAttribute("data-analytics-proximity-state", "true");
+   	});
+   	element.addEventListener('mouseout', function() {
+   		//trigger the function
+   		let state = element.getAttribute('data-analytics-proximity-state');
+   		if(state == "true"){
+   			console.log("user hovered near but didn't click");
+   		} else {
+   			console.log("user clicked the button before they moved away");
+   		}
+   	});
+   	element.addEventListener('click', function() {
+   		//dis-arm the function
+   		element.setAttribute("data-analytics-proximity-state", "false");
+   	});
+   }); 
+
+});
+</script>
+
+</html>
