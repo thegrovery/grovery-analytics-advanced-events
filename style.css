@@ -1,0 +1,56 @@
+/*===== box-size reset =====*/
+	html {
+	  box-sizing: border-box;
+	}
+	*, *:before, *:after {
+	  box-sizing: inherit;
+	}
+
+:root{
+	--border: solid 2px #000;
+}
+
+/*===== main project styles =====*/
+	body{
+		font-family: monospace;
+		padding: 1em;
+		margin: 0;
+	}
+
+	.metaInfo{
+		margin-bottom: 0em;
+		border: var(--border);
+		padding: 1em;
+	}
+
+	.metaInfo h1{
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+
+	.demoArea{
+		width: 100%;
+		/*height: 100vh;*/
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		border: var(--border);
+		border-top: none;
+		padding: 5rem 1rem;
+	}
+
+	.button {
+	  position: relative;
+	  border: solid 3px #000;
+	  display: inline-block;
+	  padding: 5px 15px;
+	  cursor: pointer;
+	  transition: 0.15s ease-in-out;
+	}
+	.button:hover {
+	  background-color: #000;
+	  color: #fff;
+	  /*transform: translate3d(-2px, -2px, 0);
+	  box-shadow: 2px 2px rgba(0,0,0,0.75);*/
+	}
